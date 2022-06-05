@@ -15,17 +15,17 @@ def Home(request):
     return render(request, 'home.html', context=data_dict)
 
 def Delete(request, id=None):
-    ToDo.objects.first(id=id).delete()
+    ToDo.objects.get(id=id).delete()
     return redirect('home')
 
 def Complete(request, id=None):
-    data = ToDo.objects.first(id=id)
+    data = ToDo.objects.get(id=id)
     data.complete = True
     data.save()
     return redirect('home')
 
 def InComplete(request, id=None):
-    data = ToDo.objects.first(id=id)
+    data = ToDo.objects.get(id=id)
     data.complete = False
     data.save()
     return redirect('home')
